@@ -1,12 +1,18 @@
-SET SERVEROUTPUT ON;
+USE CollegeDB;
 
-DECLARE
-    num1 NUMBER := 10;
-    num2 NUMBER := 20;
-    total NUMBER;
+--check Greater than 40.
+
+DELIMITER //
+
+CREATE PROCEDURE CheckResult(IN marks INT)
 BEGIN
-    total := num1 + num2;
+    IF marks >= 40 THEN
+        SELECT 'Pass' AS Result;
+    ELSE
+        SELECT 'Fail' AS Result;
+    END IF;
+END //
 
-    DBMS_OUTPUT.PUT_LINE('Sum = ' || total);
-END;
-/
+DELIMITER ;
+
+CALL CheckResult(65);
